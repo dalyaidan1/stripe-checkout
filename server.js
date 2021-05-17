@@ -10,8 +10,23 @@ console.log(stripeSecretKey, stripePublicKey)
 
 const express = require("express")
 const app = express() // express saves all the manual setup from a basic node server
+const fs = require("fr") // read different files
 
 app.set("view engine", "ejs") // allow embedding server side code to html
 app.use(express.static("public")) // all file in public are static, and available on front-end
+
+// route for clicking the store page
+app.get("/store", (req, res) =>{
+    fs.readFile("items.json", (error, data) => {
+        if (error) {
+            res.status(500).end()
+        } else {
+            res.render("store.ejs",
+            {
+                items: JSON.parse(data) // pass the data (items.json) along with store
+            })
+        }
+    })
+})
 
 app.listen(3000)
