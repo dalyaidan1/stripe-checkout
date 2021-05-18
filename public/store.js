@@ -1,3 +1,4 @@
+
 if (document.readyState == 'loading') {
     document.addEventListener('DOMContentLoaded', ready)
 } else {
@@ -25,15 +26,36 @@ function ready() {
 
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
+const stripe = Stripe(stripePublicKey)
 
-function purchaseClicked() {
-    alert('Thank you for your purchase')
-    var cartItems = document.getElementsByClassName('cart-items')[0]
-    while (cartItems.hasChildNodes()) {
-        cartItems.removeChild(cartItems.firstChild)
-    }
-    updateCartTotal()
+
+async function purchaseClicked() {
+    // alert('Thank you for your purchase')
+    // var cartItems = document.getElementsByClassName('cart-items')[0]
+    // while (cartItems.hasChildNodes()) {
+    //     cartItems.removeChild(cartItems.firstChild)
+    // }
+    // updateCartTotal()
+    let quantity = parseInt(document.getElementsByClassName("cart-quantity-input")[0].value)
+    if (quantity = 1) console.log("asd");
+    fetch("/create-checkout-session", {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+            quantity: quantity
+        }),
+    })
+    .then((response) => response.json())
+    .then((session) => {
+       stripe.redirectToCheckout({sessionId: session.id})
+    })
+    .catch((error) => {
+        console.log(`Error: ${error}`)
+    })
 }
+
 
 function removeCartItem(event) {
     var buttonClicked = event.target
