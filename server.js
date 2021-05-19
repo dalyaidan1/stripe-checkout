@@ -6,6 +6,7 @@ if (process.env.NODE_ENV !== "production") {
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY
 const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 
+const { json } = require("express")
 // console.log(stripeSecretKey, stripePublicKey)
 
 const express = require("express")
@@ -61,19 +62,42 @@ app.get("/store", (req, res) =>{
 
 // route for clicking the purchase button on store page
 app.post("/create-checkout-session", async (req, res) => {
+
+    const content = fs.readFileSync('items.json', 'utf8');
+    const data = await JSON.parse(content)
+    const type = await req.body.type
+    // console.log(await type, await data[type], req.body);
+    let priceID
+    
+    for (product of data[type]){
+        if (product.id == req.body.product){
+            priceID = product.price_id
+        }
+    }
+
+    /**
+     * if 1 item ...
+     * 
+     * else (multiple items)
+     * add bigger line type
+     * 
+     */    
+    
+    // console.log(priceID);
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         line_items: [{
-            price:"price_1IsFq7KI9xDxhPPdiBPA1XVp",
+            price:priceID,
             quantity: req.body.quantity,
-        }],
+        },],
         mode: 'payment',
         success_url: 'http://localhost:3000?id={CHECKOUT_SESSION_ID}',
         cancel_url: 'http://localhost:3000/cancel',
-      });
-      res.json({
-          id: session.id,
-      })
+        });
+        res.json({
+            id: session.id,
+        })
+
 })
 
 app.listen(3000)
