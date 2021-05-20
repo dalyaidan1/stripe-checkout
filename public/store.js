@@ -41,9 +41,7 @@ async function purchaseClicked() {
             "Content-Type" : "application/json",
         },
         body: JSON.stringify({
-            quantity: quantity,
-            product: product,
-            type: pType,
+            productSelections: productSelections,
         }),
     })
     .then((response) => response.json())

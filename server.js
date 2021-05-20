@@ -63,41 +63,27 @@ app.get("/store", (req, res) =>{
 // route for clicking the purchase button on store page
 app.post("/create-checkout-session", async (req, res) => {
 
-    const content = fs.readFileSync('items.json', 'utf8');
+    const content = fs.readFileSync('items.json', 'utf8')
     const data = await JSON.parse(content)
-    const type = await req.body.type
-    // console.log(await type, await data[type], req.body);
-    let priceID
     
-    for (product of data[type]){
-        if (product.id == req.body.product){
-            priceID = product.price_id
+    const {productSelections} = req.body
+    const lineItems = Object.entries(productSelections).map(([id, quantity]) => {
+        return {
+            price: `price_${id}`,
+            quantity: quantity
         }
-    }
+    })
 
-    /**
-     * if 1 item ...
-     * 
-     * else (multiple items)
-     * add bigger line type
-     * 
-     */    
-    
-    // console.log(priceID);
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items: [{
-            price:priceID,
-            quantity: req.body.quantity,
-        },],
+        line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000?id={CHECKOUT_SESSION_ID}',
-        cancel_url: 'http://localhost:3000/cancel',
+        success_url: 'http://localhost:3000/store?id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'http://localhost:3000/store',
         });
         res.json({
             id: session.id,
         })
-
 })
 
 app.listen(3000)
