@@ -6,36 +6,31 @@ if (document.readyState == 'loading') {
 }
 
 function ready() {
-    let removeCartItemButtons = document.getElementsByClassName('btn-danger')
+    const removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (let i = 0; i < removeCartItemButtons.length; i++) {
-        let button = removeCartItemButtons[i]
+        const button = removeCartItemButtons[i]
         button.addEventListener('click', removeCartItem)
     }
 
-    let quantityInputs = document.getElementsByClassName('cart-quantity-input')
+    const quantityInputs = document.getElementsByClassName('cart-quantity-input')
     for (let i = 0; i < quantityInputs.length; i++) {
-        let input = quantityInputs[i]
+        const input = quantityInputs[i]
         input.addEventListener('change', quantityChanged)
     }
 
-    let addToCartButtons = document.getElementsByClassName('shop-item-button')
+    const addToCartButtons = document.getElementsByClassName('shop-item-button')
     for (let i = 0; i < addToCartButtons.length; i++) {
-        let button = addToCartButtons[i]
+        const button = addToCartButtons[i]
         button.addEventListener('click', addToCartClicked)
     }
 
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 }
 const stripe = Stripe(stripePublicKey)
-
+// key: pid, value: quantity
+const productSelections = {}
 
 async function purchaseClicked() {
-    // alert('Thank you for your purchase')
-    // let cartItems = document.getElementsByClassName('cart-items')[0]
-    // while (cartItems.hasChildNodes()) {
-    //     cartItems.removeChild(cartItems.firstChild)
-    // }
-    // updateCartTotal()
     let quantity = parseInt(document.getElementsByClassName("cart-quantity-input")[0].value)
     let product = document.getElementsByClassName("cart-item-title")[0].getAttribute("data-item-id")
     let pType = document.getElementsByClassName("cart-item-title")[0].getAttribute("data-item-type")
@@ -58,31 +53,34 @@ async function purchaseClicked() {
     .catch((error) => {
         console.log(`Error: ${error}`)
     })
+    updateCartTotal()
 }
 
 
 function removeCartItem(event) {
-    let buttonClicked = event.target
+    const buttonClicked = event.target
     buttonClicked.parentElement.parentElement.remove()
     updateCartTotal()
 }
 
 function quantityChanged(event) {
-    let input = event.target
+    const input = event.target
     if (isNaN(input.value) || input.value <= 0) {
         input.value = 1
     }
+    const productID = input.parentElement.parentElement.getElementsByClassName("cart-item-title")[0].getAttribute("data-item-id")
+    productSelections[productID] = parseInt(input.value)
     updateCartTotal()
 }
 
 function addToCartClicked(event) {
-    let button = event.target
-    let shopItem = button.parentElement.parentElement
-    let title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
-    let price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
-    let imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
-    let product = this.parentElement.parentElement.getAttribute("data-item-id")
-    let pType = this.parentElement.parentElement.getAttribute("data-item-type")
+    const button = event.target
+    const shopItem = button.parentElement.parentElement
+    const title = shopItem.getElementsByClassName('shop-item-title')[0].innerText
+    const price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
+    const imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
+    const product = this.parentElement.parentElement.getAttribute("data-item-id")
+    const pType = this.parentElement.parentElement.getAttribute("data-item-type")
     addItemToCart(title, price, imageSrc, product, pType)
     updateCartTotal()
 }
@@ -110,20 +108,22 @@ function addItemToCart(title, price, imageSrc, product, pType) {
         </div>`
     cartRow.innerHTML = cartRowContents
     cartItems.append(cartRow)
+    productSelections[product] = 1
+    console.log(productSelections)
     cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
     cartRow.getElementsByClassName('cart-quantity-input')[0].addEventListener('change', quantityChanged)
 }
 
 function updateCartTotal() {
-    let cartItemContainer = document.getElementsByClassName('cart-items')[0]
-    let cartRows = cartItemContainer.getElementsByClassName('cart-row')
+    const cartItemContainer = document.getElementsByClassName('cart-items')[0]
+    const cartRows = cartItemContainer.getElementsByClassName('cart-row')
     let total = 0
     for (let i = 0; i < cartRows.length; i++) {
         let cartRow = cartRows[i]
-        let priceElement = cartRow.getElementsByClassName('cart-price')[0]
-        let quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
-        let price = parseFloat(priceElement.innerText.replace('$', ''))
-        let quantity = quantityElement.value
+        const priceElement = cartRow.getElementsByClassName('cart-price')[0]
+        const quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
+        const price = parseFloat(priceElement.innerText.replace('$', ''))
+        const quantity = quantityElement.value
         total = total + (price * quantity)
     }
     total = Math.round(total * 100) / 100
