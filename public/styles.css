@@ -1,18 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
-@import url("https://fonts.googleapis.com/css?family=Metal+Mania");
-
-@font-face {
-    font-family: "Booter - Zero Zero";
-    src: url("Fonts/Booter - Zero Zero.woff") format("woff"),
-         url("Fonts/Booter - Zero Zero.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
     box-sizing: border-box;
     font-family: Raleway;
     color: #777;
+}
+
+p, li, i, strong, a, h1, h2, h3, h3, h5, h6, span{
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {
@@ -21,79 +14,75 @@ html, body {
     min-height: 100%;
 }
 
-.nav ul {
+nav{
+    width: 100%;
+    text-align: center;
+    font-weight: lighter;
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, .3);
+    height: 4rem;
+    position:fixed;
+    top:0;
+    z-index:3;
+}
+
+nav ul {
     margin: 0;
 }
 
-.nav li {
+nav li {
     display: inline;
+    margin:0 5%;
 }
 
-.nav a {
+nav a {
     display: inline-block;
-    padding: .5em;
     color: white;
+    padding: 1.5rem 0;
     text-decoration: none;
 }
 
-.main-nav {
-    text-align: center;
-    font-size: 1.1em;
-    font-weight: lighter;
-    border-bottom: 1px solid rgba(255, 255, 255, .3)
-}
-
-.main-nav li {
-    padding: 0 5%;
-}
-
-.nav a:hover {
+nav a:hover {
     background-color: rgba(255, 255, 255, .3)
 }
 
 .main-header {
     background-color: rgba(0, 0, 0, .6);
-    background-image: url("Images/Header Background.jpg");
+    background-image: url("https://picsum.photos/1500/800");
     background-blend-mode: multiply;
     background-size: cover;
-    padding-bottom: 30px;
+    height: 25rem;
+    width: 100%;
 }
 
-.band-name {
+.company-name {
     text-align: center;
     margin: 0;
     font-size: 4em;
-    font-family: "Booter - Zero Zero";
     font-weight: normal;
     color: white;
+    /* margin:6.5rem 0; */
 }
-
-.band-name-large {
-    font-size: 8em;
-}
-
 .content-section {
     margin: 1em;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 56.25rem;
     margin: 0 auto;
     padding: 0 1.5em;
 }
 .section-header {
-    font-family: "Metal Mania";
     font-weight: normal;
     color: #333;
     text-align: center;
     font-size: 2.5em;
 }
 
-.about-band-image {
+.about-company-image {
     float: left;
-    height: 200px;
-    width: 200px;
-    margin: 15px;
+    height: 12.5rem;
+    width: 12.5rem;
+    margin: 0.9375rem;
     border-radius: 50%;
 }
 
@@ -118,8 +107,8 @@ html, body {
 }
 
 .footer-nav img {
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
 }
 
 .btn {
@@ -132,7 +121,7 @@ html, body {
 .btn-header {
     margin: .5em 15% 2em 15%;
     color: white;
-    border: 2px solid #2D9CDB;
+    border: 0.125rem solid #2D9CDB;
     background-color: rgba(255, 255, 255, .1);
     border-radius: 0;
     font-size: 1.5em;
@@ -151,8 +140,8 @@ html, body {
     color: #2D9CDB;
     font-size: 4em;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
     padding: 0;
     text-align: center;
 }
@@ -170,7 +159,7 @@ html, body {
 }
 
 .tour-row {
-    border-bottom: 1px solid black;
+    border-bottom: 0.0625rem solid black;
     padding-bottom: 1em;
     margin-bottom: 1em;
 }
@@ -203,7 +192,7 @@ html, body {
 }
 
 .shop-item {
-    margin: 30px;
+    margin: 1.875rem;
 }
 
 .shop-item-title {
@@ -213,17 +202,17 @@ html, body {
     font-weight: bold;
     font-size: 1.5em;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
 .shop-item-image {
-    height: 250px;
+    height: 15.625rem;
 }
 
 .shop-item-details {
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 0.3125rem;
 }
 
 .shop-item-price {
@@ -246,10 +235,10 @@ html, body {
 .cart-column {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid black;
+    border-bottom: 0.0625rem solid black;
     margin-right: 1.5em;
-    padding-bottom: 10px;
-    margin-top: 10px;
+    padding-bottom: 0.625rem;
+    margin-top: 0.625rem;
 }
 
 .cart-row {
@@ -277,9 +266,9 @@ html, body {
 }
 
 .cart-item-image {
-    width: 75px;
+    width: 4.6875rem;
     height: auto;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 }
 
 .btn-danger {
@@ -295,20 +284,20 @@ html, body {
 }
 
 .cart-quantity-input {
-    height: 34px;
-    width: 50px;
-    border-radius: 5px;
-    border: 1px solid #56CCF2;
+    height: 2.125rem;
+    width: 3.125rem;
+    border-radius: 0.3125rem;
+    border: 0.0625rem solid #56CCF2;
     background-color: #eee;
     color: #333;
     padding: 0;
     text-align: center;
     font-size: 1.2em;
-    margin-right: 25px;
+    margin-right: 1.5625rem;
 }
 
 .cart-row:last-child {
-    border-bottom: 1px solid black;
+    border-bottom: 0.0625rem solid black;
 }
 
 .cart-row:last-child .cart-column {
@@ -317,15 +306,15 @@ html, body {
 
 .cart-total {
     text-align: end;
-    margin-top: 10px;
-    margin-right: 10px;
+    margin-top: 0.625rem;
+    margin-right: 0.625rem;
 }
 
 .cart-total-title {
     font-weight: bold;
     font-size: 1.5em;
     color: black;
-    margin-right: 20px;
+    margin-right: 1.25rem;
 }
 
 .cart-total-price {
@@ -335,6 +324,6 @@ html, body {
 
 .btn-purchase {
     display: block;
-    margin: 40px auto 80px auto;
+    margin: 2.5rem auto 5rem auto;
     font-size: 1.75em;
 }

@@ -46,12 +46,12 @@ app.use(function (req, res, next) {
 }
 
 // route for clicking the store page
-app.get("/store", (req, res) =>{
+app.get("/index", (req, res) =>{
     fs.readFile("items.json", (error, data) => {
         if (error) {
             res.status(500).end()
         } else {
-            res.render("store.ejs",
+            res.render("index.ejs",
             {
                 stripePublicKey: stripePublicKey,
                 items: JSON.parse(data) // pass the data (items.json) along with store
@@ -78,8 +78,8 @@ app.post("/create-checkout-session", async (req, res) => {
         payment_method_types: ['card'],
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000/store?id={CHECKOUT_SESSION_ID}',
-        cancel_url: 'http://localhost:3000/store',
+        success_url: 'http://localhost:3000/index?id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'http://localhost:3000/index',
         });
         res.json({
             id: session.id,
