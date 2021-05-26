@@ -31,10 +31,6 @@ const stripe = Stripe(stripePublicKey)
 const productSelections = {}
 
 async function purchaseClicked() {
-    let quantity = parseInt(document.getElementsByClassName("cart-quantity-input")[0].value)
-    let product = document.getElementsByClassName("cart-item-title")[0].getAttribute("data-item-id")
-    let pType = document.getElementsByClassName("cart-item-title")[0].getAttribute("data-item-type")
-    console.log(product);
     fetch("/create-checkout-session", {
         method: "POST",
         headers: {
@@ -78,12 +74,11 @@ function addToCartClicked(event) {
     const price = shopItem.getElementsByClassName('shop-item-price')[0].innerText
     const imageSrc = shopItem.getElementsByClassName('shop-item-image')[0].src
     const product = this.parentElement.parentElement.getAttribute("data-item-id")
-    const pType = this.parentElement.parentElement.getAttribute("data-item-type")
-    addItemToCart(title, price, imageSrc, product, pType)
+    addItemToCart(title, price, imageSrc, product)
     updateCartTotal()
 }
 
-function addItemToCart(title, price, imageSrc, product, pType) {
+function addItemToCart(title, price, imageSrc, product) {
     let cartRow = document.createElement('div')
     cartRow.classList.add('cart-row')
     let cartItems = document.getElementsByClassName('cart-items')[0]
@@ -97,7 +92,7 @@ function addItemToCart(title, price, imageSrc, product, pType) {
     let cartRowContents = `
         <div class="cart-item cart-column">
             <img class="cart-item-image" src="${imageSrc}" width="100" height="100">
-            <span class="cart-item-title" data-item-id="${product}" data-item-type="${pType}">${title}</span>
+            <span class="cart-item-title" data-item-id="${product}">${title}</span>
         </div>
         <span class="cart-price cart-column">${price}</span>
         <div class="cart-quantity cart-column">

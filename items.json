@@ -1,48 +1,48 @@
 {
-  "music": [
+  "category1": [
     {
       "id": 1,
-      "name": "Album 1",
+      "name": "Product 1",
       "price": 1299,
       "price_id": "1IsYETKI9xDxhPPdhlPEpmja",
-      "imgName": "Album 1.png"
+      "imgName": "https://picsum.photos/300?random=1"
     },
     {
       "id": 2,
-      "name": "Album 2",
+      "name": "Product 2",
       "price": 1499,
       "price_id": "1IsYEqKI9xDxhPPdLn04kd7l",
-      "imgName": "Album 2.png"
+      "imgName": "https://picsum.photos/300?random=2"
     },
     {
       "id": 3,
-      "name": "Album 3",
+      "name": "Product 3",
       "price": 999,
       "price_id": "1IsYF9KI9xDxhPPd4KClWg0e",
-      "imgName": "Album 3.png"
+      "imgName": "https://picsum.photos/300?random=3"
     },
     {
       "id": 4,
-      "name": "Album 4",
+      "name": "Product 4",
       "price": 1999,
       "price_id": "1IsYFTKI9xDxhPPduOo6Ybka",
-      "imgName": "Album 4.png"
+      "imgName": "https://picsum.photos/300?random=4"
     }
   ],
-  "merch": [
+  "category2": [
     {
       "id": 5,
-      "name": "T-Shirt",
+      "name": "Product 5",
       "price": 1999,
       "price_id": "1IsYDzKI9xDxhPPdhjh8r30I",
-      "imgName": "Shirt.png"
+      "imgName": "https://picsum.photos/300?random=5"
     },
     {
       "id": 6,
-      "name": "Coffee Cup",
+      "name": "Product 6",
       "price": 699,
       "price_id": "1IsFq7KI9xDxhPPdiBPA1XVp",
-      "imgName": "Cofee.png"
+      "imgName": "https://picsum.photos/300?random=6"
     }
   ]
 }

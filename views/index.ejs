@@ -31,20 +31,20 @@
             <section>
                 <h2 class="section-header">Our Line</h2>
                 <div class="shop-items">
-                    <% items.music.forEach((item) => {%> 
-                    <div class="shop-item" data-item-id="<%= item.price_id %>" data-item-type="music">
+                    <% items.category1.forEach((item) => {%> 
+                    <div class="shop-item" data-item-id="<%= item.price_id %>">
                         <span class="shop-item-title"><%= item.name %></span>
-                        <img class="shop-item-image" src="Images/<%= item.imgName %>">
+                        <img class="shop-item-image" src="<%= item.imgName %>">
                         <div class="shop-item-details">
                             <span class="shop-item-price"><%= item.price / 100 %></span>
                             <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
                         </div>
                     </div>
                     <% }) %>
-                    <% items.merch.forEach((item) => {%> 
-                        <div class="shop-item" data-item-id="<%= item.price_id %>" data-item-type="merch">
+                    <% items.category2.forEach((item) => {%> 
+                        <div class="shop-item" data-item-id="<%= item.price_id %>">
                             <span class="shop-item-title"><%= item.name %></span>
-                            <img class="shop-item-image" src="Images/<%= item.imgName %>">
+                            <img class="shop-item-image" src="<%= item.imgName %>">
                             <div class="shop-item-details">
                                 <span class="shop-item-price"><%= item.price / 100 %></span>
                                 <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
