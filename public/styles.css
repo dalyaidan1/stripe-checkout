@@ -72,11 +72,12 @@ table {
 .color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-5-hex { color: #9DBFCD; }
 
 :root {
-    --primary-color: #f5f5f5;
-    --secondary-color: #0C516A;
+    --lightest-blue-color: #f5f5f5;
+    --dark-blue-color: #0C516A;
     --background-color: #FFF;
-    --button-color:#D9B573;
-    --button-hover-color: #e0c188;
+    --blue-color:#9DBFCD;
+    --gold-color: #D9B573;
+    --gold-color-hover: #e0c188;
 }
 
 p, li, i, strong, a, h1, h2, h3, h3, h5, h6, span, button{
@@ -85,7 +86,7 @@ p, li, i, strong, a, h1, h2, h3, h3, h5, h6, span, button{
 
 html, body {
     min-height: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--lightest-blue-color);
 }
 
 
@@ -97,7 +98,7 @@ nav{
     position:fixed;
     top:0;
     z-index:3;
-    background-color: var(--secondary-color);
+    background-color: var(--dark-blue-color);
     box-shadow: 0 12px 40px 1px rgb(0 0 0 / 7%);
 }
 nav ul{
@@ -112,14 +113,14 @@ nav ul{
 
 nav a{
     text-decoration: none;
-    color:var(--primary-color);
-    border: var(--primary-color) solid 0.1rem;
+    color:var(--lightest-blue-color);
+    border: var(--lightest-blue-color) solid 0.1rem;
     padding: 0.8rem 20%;
 }
 
 nav a:hover{
-    /* color:var(--button-color); */
-    border: var(--button-color) solid 0.1rem;
+    /* color:var(--blue-color); */
+    border: var(--blue-color) solid 0.1rem;
     width:100%;
 }
 
@@ -219,51 +220,21 @@ main > section{
     cursor: pointer;
 }
 
-.btn-header {
-    margin: .5em 15% 2em 15%;
-    color: white;
-    border: 0.125rem solid #2D9CDB;
-    background-color: rgba(255, 255, 255, .1);
-    border-radius: 0;
-    font-size: 1.5em;
-    font-weight: lighter;
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-.btn-header:hover {
-    background-color: rgba(255, 255, 255, .3);
-}
-
-.btn-play {
-    display: block;
-    margin: 0 auto;
-    color: #2D9CDB;
-    font-size: 4em;
-    border-radius: 50%;
-    width: 6.25rem;
-    height: 6.25rem;
-    padding: 0;
-    text-align: center;
-}
-
 .btn-primary {
     color: white;
-    background-color: var(--button-color);
+    background-color: var(--blue-color);
     border: none;
-    border-radius: .3em;
     font-weight: bold;
 }
 
 .btn-primary:hover {
-    background-color: var(--button-hover-color);
+    background-color: var(--lightest-blue-color);
 }
 
 .btn-danger {
     color: white;
     background-color: #EB5757;
     border: none;
-    border-radius: .3em;
     font-weight: bold;
 }
 
@@ -271,6 +242,19 @@ main > section{
     background-color: #CC4C4C;
 }
 
+.btn-purchase {
+    display: block;
+    margin: 2.5rem auto 5rem auto;
+    font-size: 1.75em;
+    width:100%;
+    background-color: var(--gold-color);
+}
+
+.btn-purchase:hover{
+    background-color: var(--gold-color-hover);
+}
+
+/* cart system */
 .cart{
     width: calc(100% - 3.75rem);
 }
@@ -288,9 +272,12 @@ main > section{
     display: flex;
     align-items: center;
     border-bottom: 0.0625rem solid black;
-    margin-right: 1.5em;
     padding-bottom: 0.625rem;
     margin-top: 0.625rem;
+}
+
+.cart-row .cart-column:nth-child(2){
+    margin:0 1.5em 0;
 }
 
 .cart-row {
@@ -326,7 +313,6 @@ main > section{
 .cart-quantity-input {
     height: 2.125rem;
     width: 3.125rem;
-    border-radius: 0.3125rem;
     border: 0.0625rem solid #56CCF2;
     background-color: #eee;
     color: #333;
@@ -360,10 +346,4 @@ main > section{
 .cart-total-price {
     color: #333;
     font-size: 1.1em;
-}
-
-.btn-purchase {
-    display: block;
-    margin: 2.5rem auto 5rem auto;
-    font-size: 1.75em;
 }
