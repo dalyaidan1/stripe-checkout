@@ -6,8 +6,8 @@ TABLE OF CONTENTS
 3. Navigation
 4. Main
     4.1 Products
-    4.2 Cart
-5. Footer
+    4.2 Buttons
+    4.3 Cart
 */
 
 
@@ -178,6 +178,7 @@ main > section{
     margin: 1.875rem;
 }
 
+/** 4.1 Products **/
 .shop-item {
     margin: 1.875rem;
 }
@@ -212,7 +213,7 @@ main > section{
     justify-content: flex-start;
 }
 
-/* Buttons */
+/** 4.2 Buttons **/
 .btn {
     text-align: center;
     vertical-align: middle;
@@ -254,7 +255,7 @@ main > section{
     background-color: var(--gold-color-hover);
 }
 
-/* cart system */
+/** 4.3 Cart **/
 .cart{
     width: calc(100% - 3.75rem);
 }
