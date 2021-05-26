@@ -60,9 +60,17 @@ app.get("/", (req, res) =>{
     })
 })
 
+const stripeW = require("stripe")(stripeSecretKey)
+
 // route for success page
-app.get("/success", (req, res) =>{
-    res.render("success.ejs")
+app.get("/success", async (req, res) =>{
+    const session = await stripeW.checkout.sessions.retrieve(req.query.session_id);
+    const customer = await stripeW.customers.retrieve(session.customer);
+
+    res.render("success.ejs",{
+        customerName: customer.name,
+    }
+    )
 })
 
 // route for cancel page
@@ -88,7 +96,7 @@ app.post("/create-checkout-session", async (req, res) => {
         payment_method_types: ['card'],
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000/success?id={CHECKOUT_SESSION_ID}',
+        success_url: 'http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}',
         cancel_url: 'http://localhost:3000/cancel',
         });
         res.json({
