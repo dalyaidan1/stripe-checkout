@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
     <head>
         <title>Your Company | Store</title>
         <meta name="description" content="This is the description">
@@ -34,7 +34,7 @@
                     <% items.category1.forEach((item) => {%> 
                     <div class="shop-item" data-item-id="<%= item.price_id %>">
                         <span class="shop-item-title"><%= item.name %></span>
-                        <img class="shop-item-image" src="<%= item.imgName %>">
+                        <img class="shop-item-image" src="<%= item.imgName %>" alt="<%= item.name %>">
                         <div class="shop-item-details">
                             <span class="shop-item-price"><%= item.price / 100 %></span>
                             <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
@@ -44,7 +44,7 @@
                     <% items.category2.forEach((item) => {%> 
                         <div class="shop-item" data-item-id="<%= item.price_id %>">
                             <span class="shop-item-title"><%= item.name %></span>
-                            <img class="shop-item-image" src="<%= item.imgName %>">
+                            <img class="shop-item-image" src="<%= item.imgName %>" alt="<%= item.name %>">
                             <div class="shop-item-details">
                                 <span class="shop-item-price"><%= item.price / 100 %></span>
                                 <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>

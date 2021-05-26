@@ -222,13 +222,13 @@ main > section{
 
 .btn-primary {
     color: white;
-    background-color: var(--blue-color);
+    background-color: var(--dark-blue-color);
     border: none;
     font-weight: bold;
 }
 
 .btn-primary:hover {
-    background-color: var(--lightest-blue-color);
+    background-color: var(--blue-color);
 }
 
 .btn-danger {
