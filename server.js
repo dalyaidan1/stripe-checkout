@@ -60,6 +60,16 @@ app.get("/", (req, res) =>{
     })
 })
 
+// route for success page
+app.get("/success", (req, res) =>{
+    res.render("success.ejs")
+})
+
+// route for cancel page
+app.get("/cancel", (req, res) =>{
+    res.render("cancel.ejs")
+})
+
 // route for clicking the purchase button on store page
 app.post("/create-checkout-session", async (req, res) => {
 
@@ -78,8 +88,8 @@ app.post("/create-checkout-session", async (req, res) => {
         payment_method_types: ['card'],
         line_items: lineItems,
         mode: 'payment',
-        success_url: 'http://localhost:3000/index?id={CHECKOUT_SESSION_ID}',
-        cancel_url: 'http://localhost:3000/index',
+        success_url: 'http://localhost:3000/success?id={CHECKOUT_SESSION_ID}',
+        cancel_url: 'http://localhost:3000/cancel',
         });
         res.json({
             id: session.id,
