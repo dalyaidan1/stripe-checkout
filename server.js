@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
 }
 
 // route for clicking the store page
-app.get("/index", (req, res) =>{
+app.get("/", (req, res) =>{
     fs.readFile("items.json", (error, data) => {
         if (error) {
             res.status(500).end()

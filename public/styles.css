@@ -1,48 +1,138 @@
-* {
-    box-sizing: border-box;
-    font-family: Raleway;
-    color: #777;
+/**
+TABLE OF CONTENTS
+==================
+1. Reset
+2. Global
+3. Navigation
+4. Main
+    4.1 Products
+    4.2 Cart
+5. Footer
+*/
+
+
+/*** 1. Reset ***/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-p, li, i, strong, a, h1, h2, h3, h3, h5, h6, span{
+
+/*** 2. Global ***/
+
+/* Color Theme Swatches in Hex */
+.color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-1-hex { color: #011640; }
+.color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-2-hex { color: #0C516A; }
+.color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-3-hex { color: #D9B573; }
+.color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-4-hex { color: #D9E0E0; }
+.color-theme_65A099A8-4ADF-41FD-8F59-E7F19DE469F0-5-hex { color: #9DBFCD; }
+
+:root {
+    --primary-color: #f5f5f5;
+    --secondary-color: #0C516A;
+    --background-color: #FFF;
+    --button-color:#D9B573;
+    --button-hover-color: #e0c188;
+}
+
+p, li, i, strong, a, h1, h2, h3, h3, h5, h6, span, button{
     font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
     min-height: 100%;
+    background-color: var(--primary-color);
 }
 
+
+
+/*** 3. Navigation ***/
 nav{
     width: 100%;
-    text-align: center;
-    font-weight: lighter;
-    border-bottom: 0.0625rem solid rgba(255, 255, 255, .3);
-    height: 4rem;
+    height: 5rem;   
     position:fixed;
     top:0;
     z-index:3;
+    background-color: var(--secondary-color);
+    box-shadow: 0 12px 40px 1px rgb(0 0 0 / 7%);
 }
-
-nav ul {
-    margin: 0;
-}
-
-nav li {
-    display: inline;
+nav ul{
+    display: flex;
+    flex:1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height:100%;
     margin:0 5%;
 }
 
-nav a {
-    display: inline-block;
-    color: white;
-    padding: 1.5rem 0;
+nav a{
     text-decoration: none;
+    color:var(--primary-color);
+    border: var(--primary-color) solid 0.1rem;
+    padding: 0.8rem 20%;
 }
 
-nav a:hover {
-    background-color: rgba(255, 255, 255, .3)
+nav a:hover{
+    /* color:var(--button-color); */
+    border: var(--button-color) solid 0.1rem;
+}
+
+/* logo container */
+nav ul li:nth-child(1){
+    width:10%;
+}
+
+nav ul li:nth-child(1) a{
+    border:none;
+}
+
+nav img{
+    width:100%;
 }
 
 .main-header {
@@ -52,6 +142,7 @@ nav a:hover {
     background-size: cover;
     height: 25rem;
     width: 100%;
+    padding-top: 5rem;
 }
 
 .company-name {
@@ -60,135 +151,28 @@ nav a:hover {
     font-size: 4em;
     font-weight: normal;
     color: white;
-    /* margin:6.5rem 0; */
-}
-.content-section {
-    margin: 1em;
+    padding:7rem 0;
 }
 
-.container {
-    max-width: 56.25rem;
-    margin: 0 auto;
-    padding: 0 1.5em;
+
+/*** 4. Main ***/
+main{
+    width:90%;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main > section{
+    width:100%;
 }
 .section-header {
     font-weight: normal;
     color: #333;
-    text-align: center;
     font-size: 2.5em;
-}
-
-.about-company-image {
-    float: left;
-    height: 12.5rem;
-    width: 12.5rem;
-    margin: 0.9375rem;
-    border-radius: 50%;
-}
-
-.main-footer {
-    background-color: #56CCF2;
-    color: white;
-    padding: .25em 0;
-}
-
-.main-footer-container {
-    display: flex;
-    align-items: center;
-}
-
-.main-footer-container ul {
-    flex-grow: 1;
-    text-align: end;
-}
-
-.footer-nav li {
-    padding: 0 .5em;
-}
-
-.footer-nav img {
-    width: 1.875rem;
-    height: 1.875rem;
-}
-
-.btn {
-    text-align: center;
-    vertical-align: middle;
-    padding: .67em .67em;
-    cursor: pointer;
-}
-
-.btn-header {
-    margin: .5em 15% 2em 15%;
-    color: white;
-    border: 0.125rem solid #2D9CDB;
-    background-color: rgba(255, 255, 255, .1);
-    border-radius: 0;
-    font-size: 1.5em;
-    font-weight: lighter;
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-.btn-header:hover {
-    background-color: rgba(255, 255, 255, .3);
-}
-
-.btn-play {
-    display: block;
-    margin: 0 auto;
-    color: #2D9CDB;
-    font-size: 4em;
-    border-radius: 50%;
-    width: 6.25rem;
-    height: 6.25rem;
-    padding: 0;
-    text-align: center;
-}
-
-.btn-primary {
-    color: white;
-    background-color: #56CCF2;
-    border: none;
-    border-radius: .3em;
-    font-weight: bold;
-}
-
-.btn-primary:hover {
-    background-color: #2D9CDB;
-}
-
-.tour-row {
-    border-bottom: 0.0625rem solid black;
-    padding-bottom: 1em;
-    margin-bottom: 1em;
-}
-
-.tour-row:last-child {
-    border: none;
-}
-
-.tour-item {
-    display: inline-block;
-    padding-right: .5em;
-}
-
-.tour-date {
-    color: #555;
-    width: 11%;
-    font-weight: bold;
-}
-
-.tour-city {
-    width: 24%;
-}
-
-.tour-arena {
-    width: 42%;
-}
-
-.tour-btn {
-    max-width: 19%;
+    margin: 1.875rem;
 }
 
 .shop-item {
@@ -198,11 +182,10 @@ nav a:hover {
 .shop-item-title {
     display: block;
     width: 100%;
-    text-align: center;
     font-weight: bold;
     font-size: 1.5em;
     color: #333;
-    margin-bottom: 0.9375rem;
+    margin:0 0 0.9375rem 0.3125rem;
 }
 
 .shop-item-image {
@@ -222,8 +205,8 @@ nav a:hover {
 
 .shop-items {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-flow: wrap;
+    justify-content: flex-start;
 }
 
 .cart-header {
@@ -269,6 +252,53 @@ nav a:hover {
     width: 4.6875rem;
     height: auto;
     border-radius: 0.625rem;
+}
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    padding: .67em .67em;
+    cursor: pointer;
+}
+
+.btn-header {
+    margin: .5em 15% 2em 15%;
+    color: white;
+    border: 0.125rem solid #2D9CDB;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 0;
+    font-size: 1.5em;
+    font-weight: lighter;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.btn-header:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.btn-play {
+    display: block;
+    margin: 0 auto;
+    color: #2D9CDB;
+    font-size: 4em;
+    border-radius: 50%;
+    width: 6.25rem;
+    height: 6.25rem;
+    padding: 0;
+    text-align: center;
+}
+
+.btn-primary {
+    color: white;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--button-hover-color);
 }
 
 .btn-danger {
@@ -326,4 +356,31 @@ nav a:hover {
     display: block;
     margin: 2.5rem auto 5rem auto;
     font-size: 1.75em;
+}
+
+
+/*** 5. Footer ***/
+.main-footer {
+    background-color: #56CCF2;
+    color: white;
+    padding: .25em 0;
+}
+
+.main-footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.main-footer-container ul {
+    flex-grow: 1;
+    text-align: end;
+}
+
+.footer-nav li {
+    padding: 0 .5em;
+}
+
+.footer-nav img {
+    width: 1.875rem;
+    height: 1.875rem;
 }
