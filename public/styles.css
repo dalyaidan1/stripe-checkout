@@ -120,6 +120,7 @@ nav a{
 nav a:hover{
     /* color:var(--button-color); */
     border: var(--button-color) solid 0.1rem;
+    width:100%;
 }
 
 /* logo container */
@@ -129,9 +130,10 @@ nav ul li:nth-child(1){
 
 nav ul li:nth-child(1) a{
     border:none;
+    padding: 0;
 }
 
-nav img{
+nav svg{
     width:100%;
 }
 
@@ -142,7 +144,7 @@ nav img{
     background-size: cover;
     height: 25rem;
     width: 100%;
-    padding-top: 5rem;
+    margin-top: 5rem;
 }
 
 .company-name {
@@ -209,51 +211,7 @@ main > section{
     justify-content: flex-start;
 }
 
-.cart-header {
-    font-weight: bold;
-    font-size: 1.25em;
-    color: #333;
-}
-
-.cart-column {
-    display: flex;
-    align-items: center;
-    border-bottom: 0.0625rem solid black;
-    margin-right: 1.5em;
-    padding-bottom: 0.625rem;
-    margin-top: 0.625rem;
-}
-
-.cart-row {
-    display: flex;
-}
-
-.cart-item {
-    width: 45%;
-}
-
-.cart-price {
-    width: 20%;
-    font-size: 1.2em;
-    color: #333;
-}
-
-.cart-quantity {
-    width: 35%;
-}
-
-.cart-item-title {
-    color: #333;
-    margin-left: .5em;
-    font-size: 1.2em;
-}
-
-.cart-item-image {
-    width: 4.6875rem;
-    height: auto;
-    border-radius: 0.625rem;
-}
-
+/* Buttons */
 .btn {
     text-align: center;
     vertical-align: middle;
@@ -313,6 +271,58 @@ main > section{
     background-color: #CC4C4C;
 }
 
+.cart{
+    width: calc(100% - 3.75rem);
+}
+.cart > h2{
+    margin: 5% 0;
+}
+
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.0625rem solid black;
+    margin-right: 1.5em;
+    padding-bottom: 0.625rem;
+    margin-top: 0.625rem;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 4.6875rem;
+    height: auto;
+    border-radius: 0.625rem;
+}
+
 .cart-quantity-input {
     height: 2.125rem;
     width: 3.125rem;
@@ -356,31 +366,4 @@ main > section{
     display: block;
     margin: 2.5rem auto 5rem auto;
     font-size: 1.75em;
-}
-
-
-/*** 5. Footer ***/
-.main-footer {
-    background-color: #56CCF2;
-    color: white;
-    padding: .25em 0;
-}
-
-.main-footer-container {
-    display: flex;
-    align-items: center;
-}
-
-.main-footer-container ul {
-    flex-grow: 1;
-    text-align: end;
-}
-
-.footer-nav li {
-    padding: 0 .5em;
-}
-
-.footer-nav img {
-    width: 1.875rem;
-    height: 1.875rem;
 }
